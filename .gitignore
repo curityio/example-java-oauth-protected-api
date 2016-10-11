@@ -1,0 +1,42 @@
+target
+lib
+*.sublime-workspace
+
+# Logs and databases #
+######################
+*.log
+*.sqlite
+
+# Compiled files #
+######################
+*.pyc
+*.class
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Eclipse files #
+#################
+.classpath
+.project
+.settings
+
+
+# MS Word files #
+~$*.doc*
+~WRL*.tmp
+
+# Ignore build dir and dist package
+.idea
+*.iml
+=======
+.idea
+*.iml
+

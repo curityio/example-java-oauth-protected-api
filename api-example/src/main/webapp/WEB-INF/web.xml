@@ -1,0 +1,101 @@
+<!--
+  ~ Copyright (C) 2016 Curity AB. All rights reserved.
+  ~
+  ~ The contents of this file are the property of Curity AB.
+  ~ You may not copy or use this file, in either source code
+  ~ or executable form, except in compliance with terms
+  ~ set by Curity AB.
+  ~
+  ~ For further information, please contact Curity AB.
+  -->
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+    <filter>
+        <filter-name>SparkFilter</filter-name>
+        <filter-class>spark.servlet.SparkFilter</filter-class>
+        <init-param>
+            <param-name>applicationClass</param-name>
+            <param-value>se.curity.examples.spark.SparkServerExample</param-value>
+        </init-param>
+    </filter>
+
+    <!--
+     # Enable this filter if using JWT access tokens that should be validted using JWKs
+     # Note: Scope is a space separate string of scopes that are required for access
+     -->
+    <filter>
+        <filter-name>OAuthJwtFilter</filter-name>
+        <filter-class>se.curity.examples.oauth.OAuthFilter</filter-class>
+        <init-param>
+            <param-name>oauthHost</param-name>
+            <param-value>localhost</param-value>
+        </init-param>
+        <init-param>
+            <param-name>oauthPort</param-name>
+            <param-value>8443</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jsonWebKeysPath</param-name>
+            <param-value>/oauth/v2/metadata/jwks</param-value>
+        </init-param>
+        <init-param>
+            <param-name>scope</param-name>
+            <param-value>read</param-value>
+        </init-param>
+        <init-param>
+            <param-name>minKidReloadTimeInSeconds</param-name>
+            <param-value>15</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>OAuthJwtFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--
+    # Enable this filter if using Opaque access tokens that need to be introspected
+    # Note: Scope is a space separate string of scopes that are required for access
+
+    <filter>
+        <filter-name>OAuthOpaqueFilter</filter-name>
+        <filter-class>se.curity.examples.oauth.OAuthFilter</filter-class>
+        <init-param>
+            <param-name>oauthHost</param-name>
+            <param-value>localhost</param-value>
+        </init-param>
+        <init-param>
+            <param-name>oauthPort</param-name>
+            <param-value>8443</param-value>
+        </init-param>
+        <init-param>
+            <param-name>introspectionPath</param-name>
+            <param-value>/oauth/v2/introspection</param-value>
+        </init-param>
+        <init-param>
+            <param-name>clientId</param-name>
+            <param-value>test_client_1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>clientSecret</param-name>
+            <param-value>Password1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>scope</param-name>
+            <param-value>read</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>OAuthOpaqueFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    -->
+
+
+</web-app>
