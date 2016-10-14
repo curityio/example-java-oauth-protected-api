@@ -4,7 +4,7 @@
 
 ## Definitions 
 
-* "**Curity**" means Curity I/O AB, a Swedish corporation
+* "**Curity**" means Curity AB, a Swedish corporation
 * "**Software**" means the software program that this document is included with as provided by Curity
 
 ## Content

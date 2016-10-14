@@ -61,4 +61,4 @@ just return `"Welcome to an OAuth protected world"`, or 401 on invalid access to
 
 For more information, please contact [Curity](http://curity.io).
 
-Copyright 2016 Curity I/O AB
+Copyright 2016 Curity AB

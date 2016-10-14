@@ -133,4 +133,4 @@ This will be used if no properties file is found.
 
 For more information, please contact [Curity](http://curity.io).
 
-Copyright 2016 Curity I/O AB
+Copyright 2016 Curity AB
