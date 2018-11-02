@@ -25,11 +25,11 @@ import se.curity.examples.oauth.OAuthOpaqueFilter;
 import spark.servlet.SparkApplication;
 
 import javax.servlet.ServletException;
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 
-import static spark.Spark.before;
-import static spark.Spark.get;
-import static spark.Spark.halt;
-import static spark.Spark.port;
+import static spark.Spark.*;
 
 public class SparkServerExample implements SparkApplication
 {
@@ -46,8 +46,7 @@ public class SparkServerExample implements SparkApplication
         });
     }
 
-    private void initStandalone() throws ServletException
-    {
+    private void initStandalone() throws ServletException, IOException {
         init();
         OAuthFilter filter = getOpaqueFilter();
         before(((request, response) -> {
@@ -59,19 +58,20 @@ public class SparkServerExample implements SparkApplication
         }));
     }
 
-    public static void main(String[] args) throws ServletException
-    {
+    public static void main(String[] args) throws ServletException, IOException {
         port(9090);
         new SparkServerExample().initStandalone ();
     }
 
-    private OAuthFilter getJwtFilter() throws ServletException
+    private OAuthFilter getJwtFilter() throws ServletException, IOException
     {
-        EmbeddedSparkJwtFilterConfig filterParams = new EmbeddedSparkJwtFilterConfig("localhost",
-                "8443",
-                "/oauth/v2/metadata/jwks",
-                "read",
-                "3600");
+        DynamicSparkJwtFilterConfig filterParams = new DynamicSparkJwtFilterConfig("localhost", "8443", "https://localhost:8443/~/", "read", "3600");
+        DynamicSparkJwtFilterConfig.OpenIdConfig openIdConfig = filterParams.getWellKnownOpenidConf();
+        if (!filterParams.autoconfigure(openIdConfig)) { _logger.error("Filter auto-configuration failed"); }
+        else { _logger.debug("Filter auto-configuration successful"); }
+        if (!filterParams.scopeSupportedByOpenidServer(openIdConfig)) { _logger.error("Requested scope not supported by the OpenID service provider"); }
+        else { _logger.debug("Requested scope supported by the OpenID service provider"); }
+
         OAuthFilter filter = new OAuthJwtFilter();
 
         filter.init(filterParams);
@@ -79,19 +79,17 @@ public class SparkServerExample implements SparkApplication
     }
 
 
-    private OAuthFilter getOpaqueFilter() throws ServletException
-    {
-        EmbeddedSparkOpaqueFilterConfig filterParams = new EmbeddedSparkOpaqueFilterConfig("localhost",
-                "8443",
-                "/oauth/v2/introspection",
-                "gateway-client",
-                "Password1",
-                "read");
+    private OAuthFilter getOpaqueFilter() throws ServletException, IOException {
+        DynamicSparkOpaqueFilterConfig filterParams = new DynamicSparkOpaqueFilterConfig("localhost", "8443", "https://localhost:8443/~/", "gateway-client", "secret", "read");
+        DynamicSparkOpaqueFilterConfig.OpenIdConfig openIdConfig = filterParams.getWellKnownOpenidConf();
+        if (!filterParams.autoconfigure(openIdConfig)) { _logger.error("Filter auto-configuration failed"); }
+        else { _logger.debug("Filter auto-configuration successful"); }
+        if (!filterParams.scopeSupportedByOpenidServer(openIdConfig)) { _logger.error("Requested scope not supported by the OpenID service provider"); }
+        else { _logger.debug("Requested scope supported by the OpenID service provider"); }
+
         OAuthFilter filter = new OAuthOpaqueFilter();
 
         filter.init(filterParams);
         return filter;
     }
-
-
 }
