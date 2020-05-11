@@ -1,5 +1,8 @@
 # OAuth Protected API Example
 
+[![Quality](https://curity.io/assets/images/badges/example-java-oauth-protected-api-quality.svg)](https://curity.io/resources/code-examples/status/)
+[![Availability](https://curity.io/assets/images/badges/example-java-oauth-protected-api-availability.svg)](https://curity.io/resources/code-examples/status/)
+
 This project contains two modules
 
 1. api-example - an example web api that uses the OAuth filter
