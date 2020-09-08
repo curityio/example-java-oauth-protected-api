@@ -1,7 +1,7 @@
 # OAuth Protected API Example
 
-[![Quality](https://curity.io/assets/images/badges/example-java-oauth-protected-api-quality.svg)](https://curity.io/resources/code-examples/status/)
-[![Availability](https://curity.io/assets/images/badges/example-java-oauth-protected-api-availability.svg)](https://curity.io/resources/code-examples/status/)
+[![Quality](https://img.shields.io/badge/quality-demo-red)](https://curity.io/resources/code-examples/status/)
+[![Availability](https://img.shields.io/badge/availability-source-blue)](https://curity.io/resources/code-examples/status/)
 
 This project contains two modules
 
