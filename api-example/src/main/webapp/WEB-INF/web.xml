@@ -43,7 +43,7 @@
         </init-param>
         <init-param>
             <param-name>jsonWebKeysPath</param-name>
-            <param-value>/oauth/v2/metadata/jwks</param-value>
+            <param-value>/oauth/v2/oauth-anonymous/jwks</param-value>
         </init-param>
         <init-param>
             <param-name>scope</param-name>

@@ -33,13 +33,9 @@ import static spark.Spark.port;
 
 public class SparkServerExample implements SparkApplication
 {
-
-    private static final Logger _logger = LoggerFactory.getLogger(SparkServerExample.class);
-
     @Override
     public void init()
     {
-        _logger.debug("Initializing OAuth protected API");
         get("/hello_world", (req, res) ->{
             AuthenticatedUser user = (AuthenticatedUser)req.attribute(OAuthFilter.PRINCIPAL);
             return "Hello "+ user.getSubject() + " from an OAuth protected world!";
@@ -49,7 +45,7 @@ public class SparkServerExample implements SparkApplication
     private void initStandalone() throws ServletException
     {
         init();
-        OAuthFilter filter = getOpaqueFilter();
+        OAuthFilter filter = getJwtFilter();
         before(((request, response) -> {
             filter.doFilter(request.raw(), response.raw(), null);
             if(response.raw().isCommitted())
@@ -69,7 +65,7 @@ public class SparkServerExample implements SparkApplication
     {
         EmbeddedSparkJwtFilterConfig filterParams = new EmbeddedSparkJwtFilterConfig("localhost",
                 "8443",
-                "/oauth/v2/metadata/jwks",
+                "/oauth/v2/oauth-anonymous/jwks",
                 "read",
                 "3600");
         OAuthFilter filter = new OAuthJwtFilter();
