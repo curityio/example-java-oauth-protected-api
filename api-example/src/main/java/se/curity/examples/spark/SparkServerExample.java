@@ -33,7 +33,6 @@ import static spark.Spark.port;
 
 public class SparkServerExample implements SparkApplication
 {
-
     private static final Logger _logger = LoggerFactory.getLogger(SparkServerExample.class);
 
     @Override
@@ -49,7 +48,7 @@ public class SparkServerExample implements SparkApplication
     private void initStandalone() throws ServletException
     {
         init();
-        OAuthFilter filter = getOpaqueFilter();
+        OAuthFilter filter = getJwtFilter();
         before(((request, response) -> {
             filter.doFilter(request.raw(), response.raw(), null);
             if(response.raw().isCommitted())
@@ -69,7 +68,7 @@ public class SparkServerExample implements SparkApplication
     {
         EmbeddedSparkJwtFilterConfig filterParams = new EmbeddedSparkJwtFilterConfig("localhost",
                 "8443",
-                "/oauth/v2/metadata/jwks",
+                "/oauth/v2/oauth-anonymous/jwks",
                 "read",
                 "3600");
         OAuthFilter filter = new OAuthJwtFilter();
