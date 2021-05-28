@@ -62,7 +62,7 @@ The API Example (api-example) and the OAuth Filter (oauth-filter) are licensed u
 
 ### Glassfish Javax.json
 
-* License: [CDDL+GPL-1.1](https://oss.oracle.com/licenses/CDDL+GPL-1.1)
+* License: [CDDL-1.1](https://oss.oracle.com/licenses/CDDL+GPL-1.1)
 * Modifications: No
 * Link: <https://javaee.github.io/jsonp>
 * Notices:
