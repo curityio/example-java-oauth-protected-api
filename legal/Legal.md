@@ -60,15 +60,6 @@ The API Example (api-example) and the OAuth Filter (oauth-filter) are licensed u
 > This product includes software developed at
 > The Apache Software Foundation (http://www.apache.org/).
 
-### Google Gson
-
-* License: [Apache v. 2](#apache-2)
-* Modifications: No
-* Link: <https://github.com/google/gson>
-* Notices:
-
-> Copyright (C) 2009 Google Inc.
-
 ### Google Guava
 
 * License: [Apache v. 2](#apache-2)

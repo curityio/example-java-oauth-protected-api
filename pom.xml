@@ -20,12 +20,12 @@
     <groupId>se.curity.examples.oauth</groupId>
     <artifactId>project</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>3.0.0</version>
     <name>Curity OAuth filter example - Project POM</name>
 
    <organization>
-        <name>Curity I/O AB</name>
-        <url>http://curity.io</url>
+        <name>Curity AB</name>
+        <url>https://curity.io</url>
     </organization>
 
     <properties>
@@ -34,7 +34,6 @@
     </properties>
 
     <modules>
-        <module>oauth-filter</module>
         <module>api-example</module>
     </modules>
 
@@ -103,9 +102,9 @@
                 <version>18.0</version>
             </dependency>
             <dependency>
-                <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>2.3.1</version>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.json</artifactId>
+                <version>1.1.4</version>
             </dependency>
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>

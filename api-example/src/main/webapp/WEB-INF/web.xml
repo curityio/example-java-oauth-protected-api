@@ -32,7 +32,7 @@
      -->
     <filter>
         <filter-name>OAuthJwtFilter</filter-name>
-        <filter-class>se.curity.examples.oauth.OAuthFilter</filter-class>
+        <filter-class>io.curity.oauth.OAuthJwtFilter</filter-class>
         <init-param>
             <param-name>oauthHost</param-name>
             <param-value>localhost</param-value>
@@ -66,7 +66,7 @@
 
     <filter>
         <filter-name>OAuthOpaqueFilter</filter-name>
-        <filter-class>se.curity.examples.oauth.OAuthFilter</filter-class>
+        <filter-class>io.curity.oauth.OAuthOpaqueFilter</filter-class>
         <init-param>
             <param-name>oauthHost</param-name>
             <param-value>localhost</param-value>

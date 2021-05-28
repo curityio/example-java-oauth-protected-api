@@ -34,7 +34,8 @@ public class EmbeddedSparkJwtFilterConfig implements FilterConfig
 
     public EmbeddedSparkJwtFilterConfig(String oauthHost, String oauthPort,
                                         String jsonWebKeysPath,
-                                        String scope, String minKidReloadTimeInSeconds)
+                                        String scope, String minKidReloadTimeInSeconds,
+                                        String issuer, String audience)
     {
         _params = new HashMap<>();
         _params.put("oauthHost", oauthHost);
@@ -42,6 +43,8 @@ public class EmbeddedSparkJwtFilterConfig implements FilterConfig
         _params.put("jsonWebKeysPath", jsonWebKeysPath);
         _params.put("scope", scope);
         _params.put("minKidReloadTimeInSeconds", minKidReloadTimeInSeconds);
+        _params.put("audience", audience);
+        _params.put("issuer", issuer);
     }
 
     @Override
