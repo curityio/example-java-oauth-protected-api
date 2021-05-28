@@ -19,14 +19,14 @@
     <parent>
         <artifactId>project</artifactId>
         <groupId>se.curity.examples.oauth</groupId>
-        <version>1.0.0</version>
+        <version>3.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>api-example</artifactId>
     <name>OAuth protected API Example</name>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>3.0.0</version>
 
     <build>
         <plugins>
@@ -79,7 +79,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>se.curity.examples.oauth</groupId>
+            <groupId>io.curity</groupId>
             <artifactId>oauth-filter</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -108,8 +108,8 @@
             <artifactId>httpclient</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty.aggregate</groupId>

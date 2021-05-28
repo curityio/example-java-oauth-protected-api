@@ -18,10 +18,10 @@ package se.curity.examples.spark;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import se.curity.examples.oauth.AuthenticatedUser;
-import se.curity.examples.oauth.OAuthFilter;
-import se.curity.examples.oauth.OAuthJwtFilter;
-import se.curity.examples.oauth.OAuthOpaqueFilter;
+import io.curity.oauth.AuthenticatedUser;
+import io.curity.oauth.OAuthFilter;
+import io.curity.oauth.OAuthJwtFilter;
+import io.curity.oauth.OAuthOpaqueFilter;
 import spark.servlet.SparkApplication;
 
 import javax.servlet.ServletException;
@@ -40,7 +40,7 @@ public class SparkServerExample implements SparkApplication
     {
         _logger.debug("Initializing OAuth protected API");
         get("/hello_world", (req, res) ->{
-            AuthenticatedUser user = (AuthenticatedUser)req.attribute(OAuthFilter.PRINCIPAL);
+            AuthenticatedUser user = req.attribute(OAuthFilter.PRINCIPAL_ATTRIBUTE_NAME);
             return "Hello "+ user.getSubject() + " from an OAuth protected world!";
         });
     }
@@ -70,7 +70,9 @@ public class SparkServerExample implements SparkApplication
                 "8443",
                 "/oauth/v2/oauth-anonymous/jwks",
                 "read",
-                "3600");
+                "3600",
+                "https://localhost:8443/oauth/v2/oauth-anonymous",
+                "client_id");
         OAuthFilter filter = new OAuthJwtFilter();
 
         filter.init(filterParams);
