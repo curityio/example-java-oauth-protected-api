@@ -49,7 +49,7 @@ The API Example (api-example) and the OAuth Filter (oauth-filter) are licensed u
 
 ### Apache HttpComponents
 
-* Licnese: [Apache v. 2](#apache-2)
+* License: [Apache v. 2](#apache-2)
 * Modifications: No
 * Link: <https://hc.apache.org/>
 * Notices:
@@ -59,6 +59,15 @@ The API Example (api-example) and the OAuth Filter (oauth-filter) are licensed u
 >
 > This product includes software developed at
 > The Apache Software Foundation (http://www.apache.org/).
+
+### Glassfish Javax.json
+
+* License: [CDDL+GPL-1.1](https://oss.oracle.com/licenses/CDDL+GPL-1.1)
+* Modifications: No
+* Link: <https://javaee.github.io/jsonp>
+* Notices:
+
+> Copyright (c) 2015, 2017 Oracle and/or its affiliates. All Rights Reserved.
 
 ### Google Guava
 
